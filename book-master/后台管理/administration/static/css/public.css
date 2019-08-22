@@ -1,0 +1,28 @@
+* {
+    padding: 0;
+    margin: 0;
+  }
+.tantan{
+    display: flex;
+  flex-flow: row wrap;
+}
+a{
+    text-decoration: none;
+    color: #000;
+}
+li{
+  list-style: none;
+}
+.public{
+ 
+    width: 100%;
+    height: 100%;
+    background-color: rgb(252, 252, 252);
+
+}
+.block{
+  
+  width: 100%;
+  position: fixed;
+  bottom: 30px;
+}

@@ -1,0 +1,61 @@
+1.拼接url 发起请求
+使用es6的模板字符串 优点： 1. 任意换行 2.添加变量
+
+2.父传递给子的组件数据，子在接收成为自己的属性后，发生改变的话，不会触发视图更新
+
+3.合并请求
+    // 商品轮播图  getthumimages/:imgid
+    // 商品信息 goods/getinfo/:goodsid
+    // let imgREQ = this.$axios.get(`getthumimages/${this.goodsId}`);
+    // let infoREQ = this.$axios.get(`goods/getinfo/${this.goodsId}`);
+    // // 合并请求 $axios.all([]).then(分发响应).catch()
+    // this.$axios
+    //   .all([imgREQ, infoREQ])//请求的主体
+    //   .then(
+    //     //   分发响应数据
+    //     this.$axios.spread((imgRES, infoRES) => {
+    //       this.imgs = imgRES.data.message;
+    //       this.info = infoRES.data.message;
+    //     })
+    //   )
+    //   .catch(console.log);
+ 
+
+4    <!-- 使轮播图显示的三步 1 修改全局样式margin:0  2 删除html中的<!DOCTYPE html> 3 删除标题栏中的fixed  -->
+    <!-- <mt-swipe :auto="4000" :show-indicators="false"> -->
+
+5      <!-- 使用v-for组件时候需要绑定key 避免vue计算key 作用是提升性能-->
+
+6 keep-alive 是 Vue 内置的一个组件，可以使被包含的组件保留状态，或避免重新渲染。
+
+7 构造函数使用  .   实例对象使用 $
+
+8 回到顶部实现
+https://blog.csdn.net/qq_36070288/article/details/84765139
+
+9 路由守卫
+https://www.cnblogs.com/lyr1213/p/9294909.html
+
+10 快速为item创建20个相同的数据
+Array(20).fill(item)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

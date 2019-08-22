@@ -1,0 +1,22 @@
+export const m = {
+  title: '书园后台管理系统',
+  index: '首页',
+  lange: '选择语言',
+  admin: '管理员',
+  user: '用户管理',
+  book: '书文管理',
+  img: '图文分享',
+  author: '作者管理',
+  shop: '商品管理',
+  type: '分类管理',
+  think: '注意事项',
+  acc:'账号密码',
+  login:'登录',
+  pass:'忘记密码',
+  pone:'请输入手机号',
+  qpass:'请输入密码',
+  name:'请输入昵称',
+  keyword:'请输入关键词',
+  code:'获取验证码',
+  welcome:'书园后台管理系统欢迎你'
+}

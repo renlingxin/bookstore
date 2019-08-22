@@ -1,0 +1,22 @@
+export const m = {
+  title: 'Backstage System ',
+  index: 'Index',
+  lange: 'Change Lange',
+  admin: 'Admin',
+  user: 'User',
+  book: 'Book',
+  img: 'Img',
+  author: 'Author',
+  shop: 'Shop',
+  type: 'Type', 
+  think: 'Think',
+  acc:'Account Password',
+  login: 'Sign in',
+  pass: 'Forget the password',
+  pone: 'Please enter your cell phone number.',
+  qpass: 'Please input a password',
+  name: 'Please enter a nickname',
+  keyword:'Please enter keywords',
+  code:'Get the authentication code',
+  welcome:'Welcome to the backstage system of the library'
+}
