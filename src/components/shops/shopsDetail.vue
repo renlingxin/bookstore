@@ -89,9 +89,9 @@ export default {
         .then(res => {
           // console.log(res);
         })
-        .catch(console.log);
+        .catch(console.log); 
       // 通过中间件将数量响应给首页显示
-      Middle.$emit("addBuyCart", this.byNum);
+      Middle.$emit("addBuyCart", this.byNum); 
     },
     addBuyCart() {
       this.isShow = true;

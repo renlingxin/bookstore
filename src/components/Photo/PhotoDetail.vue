@@ -58,7 +58,7 @@ export default {
     // 关注作者
     addFollow() {
       // 响应数据
-      shopsTools.addfollow({
+      shopsTools.addfollow({ 
         id: this.authors.id,
         author: this.authors.authorID
       });

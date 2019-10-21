@@ -11,7 +11,7 @@
         <div class="details">
           <p>{{detail.title}}</p>
           <span>
-            收藏时间：{{detail.time | converTime('YYYY-MM-DD')}}
+            收藏时间：{{detail.time | converTime('YYYY-MM-DD')}} 
           </span>
         </div>
         <!-- 立即查看 -->
