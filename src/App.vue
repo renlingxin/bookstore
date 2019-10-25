@@ -4,9 +4,8 @@
    <transition name="fade" mode="out-in">
     <router-view/>
    </transition>
-    <!-- 底部 -->
-
-    <mt-tabbar v-model="selected" v-if="$route.meta.keepAlive">
+    <!-- 底部 v-if="$route.meta.keepAlive"-->
+    <mt-tabbar v-model="selected">
       <mt-tab-item id="Home">
         <img slot="icon" src="../static/img/底部导航/首页.png" />
         首页

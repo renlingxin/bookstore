@@ -1,4 +1,4 @@
-<template>
+ <template>
   <div class="buy">
     <div class="bton">
       <!-- 蓝色背景头部 -->

@@ -1,36 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
-import Member from '@/components/Member/Member'
-import Shopcart from '@/components/Shopcart/Shopcart'
-import Search from '@/components/Search/Search'
-import NewsList from '@/components/News/NewsList'
-import NewsDetail from '@/components/News/NewsDetail'
-import PhotoList from '@/components/Photo/PhotoList'
-import PhotoDetail from '@/components/Photo/PhotoDetail'
-import shopsShow from '@/components/shops/shopShow'
-import shopsDetail from '@/components/shops/shopsDetail'
-import shopComment from '@/components/shops/shopComment'
-import feedBack from '@/components/index/feedBack'
-import feedList from '@/components/index/feedList'
-import coupon from '@/components/index/coupon'
-import myCoupon from '@/components/Search/myCoupon'
-import order from '@/components/order/order'
-import payment from '@/components/order/payment'
-import evaluated from '@/components/order/evaluated'
-import received from '@/components/order/received'
-import collection from '@/components/Search/collection'
-import follow from '@/components/Search/follow'
-import find from '@/components/Member/find'
-import settlement from '@/components/Shopcart/settlement'
-import login from '@/components/Search/login'
+
 Vue.use(Router)
 
 export default new Router({
   routes: [{
       path: '/',
       name: 'Home',
-      component: Home,
+      component: resolve => require(['@/components/Home.vue'], resolve),
       meta: {
         keepAlive: true //导航栏在该页面显示(表示该组件需要被缓存)
       }
@@ -38,7 +15,7 @@ export default new Router({
     {
       path: '/member',
       name: 'Member',
-      component: Member,
+      component: resolve => require(['@/components/Member/Member.vue'], resolve),
       meta: {
         keepAlive: true
       }
@@ -46,16 +23,16 @@ export default new Router({
     {
       path: '/shopcart',
       name: 'Shopcart',
-      component: Shopcart,
+      component: resolve => require(['@/components/Shopcart/Shopcart'], resolve),
       meta: {
         keepAlive: true,
-        requireLogin:true
+        requireLogin: true
       }
     },
     {
       path: '/search',
       name: 'Search',
-      component: Search,
+      component: resolve => require(['@/components/Search/Search.vue'], resolve),
       meta: {
         keepAlive: true
       }
@@ -63,32 +40,32 @@ export default new Router({
     {
       path: '/news/list',
       name: 'NewsList',
-      component: NewsList
+      component: resolve => require(['@/components/News/NewsList'], resolve)
     },
     {
       path: '/news/detail/:id',
       name: 'NewsDetail',
-      component: NewsDetail
+      component: resolve => require(['@/components/News/NewsDetail'], resolve)
     },
     {
       path: '/photo/list',
       name: 'PhotoList',
-      component: PhotoList
+      component: resolve => require(['@/components/Photo/PhotoList'], resolve)
     },
     {
       path: '/photo/detail/:id',
       name: 'PhotoDetail',
-      component: PhotoDetail
+      component: resolve => require(['@/components/Photo/PhotoDetail'], resolve)
     },
     {
       path: '/shops/list',
       name: 'shopsShow',
-      component: shopsShow
+      component: resolve => require(['@/components/shops/shopShow'], resolve)
     },
     {
       path: '/shops/detail',
       name: 'shopsDetail',
-      component: shopsDetail,
+      component: resolve => require(['@/components/shops/shopsDetail'], resolve),
       meta: {
         keepAlive: true
       }
@@ -96,73 +73,82 @@ export default new Router({
     {
       path: '/shops/comment',
       name: 'shopComment',
-      component: shopComment
+      component: resolve => require(['@/components/shops/shopComment'], resolve)
     },
     {
       path: '/back/type',
       name: 'feedBack',
-      component: feedBack
+      component: resolve => require(['@/components/index/feedBack'], resolve)
     },
     {
       path: '/back/list',
       name: 'feedList',
-      component: feedList
+      component: resolve => require(['@/components/index/feedList'], resolve)
     },
     {
       path: '/coupon',
       name: 'coupon',
-      component: coupon
+      component: resolve => require(['@/components/index/coupon'], resolve)
     },
     {
       path: '/search/mycoupon',
       name: 'myCoupon',
-      component: myCoupon
+      component: resolve => require(['@/components/Search/myCoupon'], resolve)
     },
     {
       path: '/order',
       name: 'order',
-      component: order,
+      component: resolve => require(['@/components/order/order'], resolve),
       children: [{
         // 待付款
         path: '/order/payment',
         name: 'payment',
-        component: payment
+        component: resolve => require(['@/components/order/payment'], resolve)
       }, {
         // 待收货
         path: '/order/evaluated',
         name: 'evaluated',
-        component: evaluated
+        component: resolve => require(['@/components/order/evaluated'], resolve)
       }, {
         // 待评价
         path: '/order/received',
         name: 'received',
-        component: received
+        component: resolve => require(['@/components/order/received'], resolve)
       }]
     },
     {
       path: '/search/follow',
       name: 'follow',
-      component: follow
+      component: resolve => require(['@/components/Search/follow'], resolve)
     },
     {
       path: '/search/collection',
       name: 'collection',
-      component: collection
+      component: resolve => require(['@/components/Search/collection'], resolve)
     },
     {
       path: '/member/find',
       name: 'find',
-      component: find
+      component: resolve => require(['@/components/Member/find'], resolve)
     },
     {
       path: '/shopcart/settlement',
       name: 'settlement',
-      component: settlement
+      component: resolve => require(['@/components/Shopcart/settlement'], resolve)
     },
     {
       path: '/login',
       name: 'login',
-      component: login
+      component: resolve => require(['@/components/Search/login'], resolve)
+    },
+    {
+      path: '/404',
+      name: '404',
+      component: resolve => require(['@/components/404'], resolve),
+    },
+    {
+      path: '*',
+      redirect: '/404'
     }
   ]
 })
