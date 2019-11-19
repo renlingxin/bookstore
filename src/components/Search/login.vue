@@ -11,7 +11,7 @@
       <!-- 输入 -->
       <div class="usermake">
         <input type="text" v-model="loginuser" placeholder="请输入手机号" @change="userver(loginuser)"/>
-        <input type="text" v-model="loginpass" placeholder="请输入密码" @change="passver(loginpass)"/>
+        <input type="password" v-model="loginpass" placeholder="请输入密码" @change="passver(loginpass)"/>
       </div>
       <!-- 登录 -->
       <button @click="goSeach">登录</button>
@@ -22,7 +22,7 @@
       <div class="usermake">
         <input type="text" v-model="nickname" placeholder="请输入昵称" @change="nickver" />
         <input type="text" v-model="phone" placeholder="请输入手机号" @change="userver(phone)" />
-        <input type="text" v-model="password" placeholder="请输入密码" @change="passver(password)" />
+        <input type="password" v-model="password" placeholder="请输入密码" @change="passver(password)" />
       </div>
       <!-- 登录 -->
       <button @click="goRegister">注册</button>
@@ -165,7 +165,7 @@ export default {
   height: 50px;
   margin-top: 8px;
   border: none;
-
+outline: none;
   border-bottom: 1px solid rgb(201, 201, 201);
 }
 .login button {

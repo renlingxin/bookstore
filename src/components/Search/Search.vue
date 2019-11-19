@@ -6,7 +6,7 @@
       <div class="myInfo tantan">
         <!-- 头像-默认 -->
         <div class="headImg tantan">
-          <img src="../../../static/img/我的/收藏.png" alt />
+          <img src="../../../static/img/男女.jpg" alt />
         </div>
         <!-- 登录-注册 -->
         <div class="login" @click="goLogin">
@@ -18,31 +18,31 @@
       <ul class="memPage tantan">
         <li>
           <router-link :to="{name:'myCoupon'}">
-            <p>0</p>
+            <p>{{notNum.myCoupon}}</p>
             <span>礼券</span>
           </router-link>
         </li>
         <li>
           <router-link :to="{name:'payment'}">
-            <p>0</p>
+            <p>{{notNum.noPayment}}</p>
             <span>待付款</span>
           </router-link>
         </li>
         <li>
           <router-link :to="{name:'evaluated'}">
-            <p>0</p>
+            <p>{{notNum.noEvaluated}}</p>
             <span>待收货</span>
           </router-link>
         </li>
         <li>
           <router-link :to="{name:'received'}">
-            <p>0</p>
+            <p>{{notNum.noReceived}}</p>
             <span>待评价</span>
           </router-link>
         </li>
         <li>
-          <router-link :to="{name:'myCoupon'}">
-            <p>0</p>
+          <router-link :to="{name:'myBalance'}">
+            <p>{{notNum.myBalance}}</p>
             <span>余额</span>
           </router-link>
         </li>
@@ -71,21 +71,44 @@
       </li>
     </ul>
 
-    <!-- 热门促销 -->
-    <div class="promotion public">
+    <!-- 热门促销1 -->
+    <div class="promotion public tantan">
       <p>热门促销</p>
       <!-- 活动详情 -->
       <div class="detail tantan">
         <img src="../../../static/img/我的/抢.png" alt />
-        <span>三体今日爆降99元，限时今天，快来抢购 ></span>
+        <span>三体今日爆降99元，限时今天，快来抢购</span>
+        <img src="../../../static/img/分类/back.png" alt />
       </div>
-      <div class="detail">
+      <div class="detail tantan">
         <img src="../../../static/img/我的/抢.png" alt />
-        <span>三体今日爆降99元，限时今天，快来抢购 ></span>
+        <span>阅读丈量世界，每满100减50，戳</span>
+        <img src="../../../static/img/分类/back.png" alt />
       </div>
-      <div class="detail">
+      <div class="detail tantan">
         <img src="../../../static/img/我的/抢.png" alt />
-        <span>三体今日爆降99元，限时今天，快来抢购 ></span>
+        <span>学生文具，五折封顶</span>
+        <img src="../../../static/img/分类/back.png" alt />
+      </div>
+    </div>
+    <!-- 热门促销2 -->
+    <div class="promotion public tantan">
+      <p>今日优惠</p>
+      <!-- 活动详情 -->
+      <div class="detail tantan">
+        <img src="../../../static/img/我的/抢.png" alt />
+        <span>百丽集团童鞋大牌日，限时99元两双</span>
+        <img src="../../../static/img/分类/back.png" alt />
+      </div>
+      <div class="detail tantan">
+        <img src="../../../static/img/我的/抢.png" alt />
+        <span>全球最美的地方 图说天下 国家地理</span>
+        <img src="../../../static/img/分类/back.png" alt />
+      </div>
+      <div class="detail tantan">
+        <img src="../../../static/img/我的/抢.png" alt />
+        <span>成语大词典 彩色本 今天折扣200元</span>
+        <img src="../../../static/img/分类/back.png" alt />
       </div>
     </div>
     <!-- 退出登录 -->
@@ -102,18 +125,66 @@ export default {
       heatitle: "登录/注册>",
       addtime: "",
       alret: "",
-      noshow: false
+      noshow: false,
+      notNum: {
+        noPayment: 0,
+        noEvaluated: 0,
+        noReceived: 0,
+        myCoupon: 0,
+        myBalance: 0
+      }
     };
   },
+  created() {
+    this.getPersonInfo();
+    this.getMemPage();
+  },
   methods: {
+    // 个人数据
+    getPersonInfo() {
+      //  获取本地存储的个人用户信息
+      if (localStorage.getItem("user")) {
+        let userinfo = JSON.parse(localStorage.getItem("user"));
+        // console.log(userinfo);
+        // 改变我的页面部分样式
+        this.noshow = true;
+        this.heatitle = userinfo.name;
+        this.addtime = userinfo.addtime;
+        this.alret = "这一天你来到了书园";
+      }
+    },
+    // 获取待付款/待收货/待评价数量
+    getMemPage() {
+      // 获取未付款商品数据
+      this.$axios
+        .get(`shop/getpay`)
+        .then(res => {
+          this.notNum.noPayment = res.data.length;
+        })
+        .catch(console.log);
+      // 获取未收货商品数据
+      this.$axios
+        .get(`shop/getstar`)
+        .then(res => {
+          this.notNum.noReceived = res.data.length;
+        })
+        .catch(console.log);
+      // 获取未收货商品数据
+      this.$axios
+        .get(`shop/gethade`)
+        .then(res => {
+          this.notNum.noEvaluated = res.data.length;
+        })
+        .catch(console.log);
+    },
     // 退出登录
     remolve() {
       localStorage.removeItem("user");
       if (!localStorage.getItem("user")) {
         this.$toast("退出成功");
         this.$router.push({
-          name:'Home'
-        })
+          name: "Home"
+        });
       }
     },
     // 跳转登录界面
@@ -122,26 +193,13 @@ export default {
         name: "login"
       });
     }
-  },
-  created() {
-    //  获取本地存储的个人用户信息
-    if (localStorage.getItem("user")) {
-      let userinfo = JSON.parse(localStorage.getItem("user"));
-      // console.log(userinfo);
-      // 改变我的页面部分样式
-      this.noshow = true;
-      this.heatitle = userinfo.name;
-      this.addtime = userinfo.addtime;
-      this.alret = "这一天你来到了书园";
-    }
   }
 };
 </script>
 
-<style>
-/* 外层大盒子 */
-.box {
-  width: 100%;
+<style scoped>
+
+.box{
   height: 100%;
   background-color: #f7f7f7;
 }
@@ -149,7 +207,7 @@ export default {
 .public {
   width: 97%;
   border-radius: 10px;
-  margin: 8px auto;
+  margin: 10px auto;
   background-color: #fff;
 }
 /* 名片 */
@@ -163,6 +221,7 @@ export default {
 }
 /* 名片-个人信息 */
 .myInfo {
+  overflow: hidden;
   align-items: center;
   margin: 10px 0 0 10px;
 }
@@ -175,8 +234,9 @@ export default {
   justify-content: center;
 }
 .headImg img {
-  width: 50px;
-  height: 50px;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
 }
 .login {
   color: #fff;
@@ -184,6 +244,7 @@ export default {
   margin-left: 14px;
 }
 .login span:nth-of-type(2) {
+  display: block;
   font-size: 12px;
 }
 /* 名片-礼券 */
@@ -227,22 +288,24 @@ export default {
 /* 促销 */
 .promotion {
   height: 175px;
-  text-align: center;
+  justify-content: center;
   overflow: hidden;
 }
 .promotion p {
-  font-size: 18px;
-  margin: 5px;
+  font-size: 16px;
 }
 /* 促销-活动详情 */
 .detail {
   width: 90%;
   height: 30px;
-  margin: 0 auto;
-  justify-content: center;
-  font-size: 15px;
-  margin-top: 15px;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 13px;
   border-bottom: 1px solid #e0e0e0;
+}
+.detail span {
+  display: inline-block;
+  width: 85%;
 }
 .detail img {
   width: 20px;
@@ -251,13 +314,13 @@ export default {
 /* 退出登录 */
 .remolve {
   width: 70%;
-  margin: 185px auto;
+  margin: 50px auto;
 }
 .remolve button {
   width: 100%;
   border: none;
   height: 40px;
-  border-radius: 10px;
+  border-radius: 8px;
   background-color: red;
   color: #fff;
   opacity: 0.5;
