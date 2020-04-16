@@ -41,7 +41,7 @@
           </router-link>
         </li>
         <li>
-          <router-link :to="{name:'myBalance'}">
+          <router-link :to="{}">
             <p>{{notNum.myBalance}}</p>
             <span>余额</span>
           </router-link>
@@ -57,7 +57,7 @@
           <p>收藏</p>
         </router-link>
       </li>
-      <li>
+      <li @click="showTitle">
         <router-link :to="{}">
           <img src="../../../static/img/我的/物流.png" alt />
           <p>物流</p>
@@ -140,6 +140,9 @@ export default {
     this.getMemPage();
   },
   methods: {
+    showTitle() {
+      this.$toast("功能待开发ing...");
+    },
     // 个人数据
     getPersonInfo() {
       //  获取本地存储的个人用户信息
@@ -198,8 +201,7 @@ export default {
 </script>
 
 <style scoped>
-
-.box{
+.box {
   height: 100%;
   background-color: #f7f7f7;
 }

@@ -85,7 +85,7 @@ export default {
           className: "back-search",
           route: { name: "coupon" }
         },
-        { title: "联系我们", className: "back-callme", route: { name: "Home" } }
+        { title: "联系我们", className: "back-callme", route: { name: "call" } }
       ]
     };
   },

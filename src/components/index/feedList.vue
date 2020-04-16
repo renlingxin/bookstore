@@ -14,7 +14,7 @@
 解决"></textarea>
     </div>
     <!-- 提交 -->
-    <button @click="submit">提交</button>
+    <mt-button @click="submit">提交</mt-button>
   </div>
 </template>
 
@@ -78,9 +78,10 @@ textarea::-webkit-input-placeholder {
 button {
   width: 100%;
   height: 43px;
+  margin-top: 15px;
   background-color: red;
   color: #fff;
-  position: fixed;
-  bottom: 0;
+  /* position: fixed;
+  bottom: 0; */
 }
 </style>

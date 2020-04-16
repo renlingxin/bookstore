@@ -140,6 +140,11 @@ export default new Router({
       component: resolve => require(['@/components/Shopcart/settlement'], resolve)
     },
     {
+      path: '/call',
+      name: 'call',
+      component: resolve => require(['@/components/call'], resolve)
+    },
+    {
       path: '/login',
       name: 'login',
       component: resolve => require(['@/components/Search/login'], resolve)

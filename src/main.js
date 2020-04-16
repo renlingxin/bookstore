@@ -27,7 +27,7 @@ import Axios from 'axios';
 // 给vue原型挂载$axios对象
 Vue.prototype.$axios = Axios;
 // 默认的公共的头
-Axios.defaults.baseURL = 'http://localhost:8888/';
+Axios.defaults.baseURL = 'http://182.92.226.20:8888/';
 // 定义拦截器
 // 1. 请求发起前显示Loading open();
 Axios.interceptors.request.use(function (config) {

@@ -15,7 +15,7 @@
             <span>(有效期至2019-10-2)</span>
             <p>只可购买生活知识类图书</p>
           </div>
-          <div class="receive">立即领取</div>
+          <div class="receive" @click="getCoupon">立即领取</div>
         </div>
         <!-- 商品展示 -->
         <ul class="shops tantan">
@@ -41,6 +41,11 @@
 export default {
   data() {
     return {};
+  },
+  methods:{
+    getCoupon(){
+      this.$toast("领取成功");
+    }
   }
 };
 </script>

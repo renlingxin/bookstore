@@ -177,8 +177,7 @@ export default {
 .pay {
   width: 100%;
   height: 50px;
-  position: fixed;
-  bottom: 0;
+  margin-top:150px;
   background-color: #fff;
   align-items: center;
   justify-content: space-between;

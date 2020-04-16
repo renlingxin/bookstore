@@ -111,6 +111,7 @@ export default {
   methods: {
     // 跳转结算界面
     gosettlement() {
+      console.log(this.options)
       if (this.options.length === 0) {
         this.$toast("您现在没有商品可以结算");
       } else {

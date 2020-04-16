@@ -53,15 +53,11 @@ export default {
       });
     },
     // 判断是否显示顶部标题组件
-    // $route(to,from){
-    //   // console.log(to);
-    //   // console.log(from)
-    //   if(to.name === "Shopcart" || "Search" || "Member"){
-    //     this.headShow = false
-    //   }else{
-    //     this.headShow = true
-    //   }
-    // }
+    $route: {
+      handler(va) {
+        if(va.name === 'Shopcart') this.totalNum = 0
+      }
+    }
   }
 };
 </script>
